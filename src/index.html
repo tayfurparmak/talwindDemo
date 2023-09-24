@@ -9,19 +9,32 @@
 <body class="bg-white h-full flex flex-col dark:bg-gray-900 dark:text-white min-h-screen" >
 
         <div class="h-15 border-b border-gray-100 dark:bg-gray-900 w-full flex justify-between items-center px-5 py-5">
+          <button type="button" class="btn md:hidden bg-transparent" onclick="showMenu('menu')">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="w-6 h-6 text-blue-500"
+              fill="currentColor"
+              viewBox="0 0 448 512"
+            >
+              <!--! Font Awesome Free 6.4.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2023 Fonticons, Inc. -->
+              <path
+                d="M0 96C0 78.3 14.3 64 32 64H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32C14.3 128 0 113.7 0 96zM0 256c0-17.7 14.3-32 32-32H416c17.7 0 32 14.3 32 32s-14.3 32-32 32H32c-17.7 0-32-14.3-32-32zM448 416c0 17.7-14.3 32-32 32H32c-17.7 0-32-14.3-32-32s14.3-32 32-32H416c17.7 0 32 14.3 32 32z"
+              />
+            </svg>
+          </button>
           <a href="#" class="text-2xl font-medium inline-flex items-center text-prototurk dark:text-white">./prototurk
             <span class="text-sm text-gray-400 ml-2">v.2.5.0</span>
           </a>
-          <form action="" class="w-1/3">
+          <form action="" class="w-1/3 hidden lg:block">
             <input type="text" placeholder="makalerde ara" class="w-full text-gray-900 bg-gray-100 h-10 px-3 placeholder-gray-900 dark:bg-gray-200 dark:placeholder:text-gray-400">
           </form>
           <a href="javascript:;" onclick="modal('login-modal')" class="bg-prototurk  text-white h-10 inline-flex items-center px-5 rounded"> Giriş Yap</a>
         </div>
 
         <main class="h-full flex">
-          <aside class="w-64 border-r p-3 hidden md:flex flex-col border-gray-100 dark:bg-gray-900 divide-solid dark:text-white  divide-gray-100 divide-y space-y">
+          <aside id="menu" class="menu">
               <nav class="mb-3">
-                <a href="#" class="nav-link">Ana Sayfa</a>
+                <a href="#" class="nav-link ">Ana Sayfa</a>
                 <a href="#" class="nav-link">Akış</a>
                 <a href="#" class="nav-link">Keşfet</a>
                 <a href="#" class="nav-link">Makalaler</a>
@@ -37,9 +50,22 @@
                 <a href="#" class="nav-link">Git</a>
               </nav>
               <div class="mt-auto pt-3">
-                <button onclick = "darkMode()" class="bg-gray-900 dark:bg-gray-200 dark:text-black dark:hover:bg-gray-600 dark:hover:text-white  hover:bg-gray-500 w-full p-2 gap-2 transition-colors text-white h-10 rounded flex items-center px-4 text-sm ">
-                  <svg xmlns="http://www.w3.org/2000/svg" height="24" viewBox="0 -960 960 960" width="24" class="fill-current "><path d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"/></svg>
-                  <span class="hidden dark:inline">Açık  Mod</span>
+                <button
+                  onclick="darkMode()"
+                  class="bg-gray-900 hover:bg-gray-500 w-full p-2 gap-2 transition-colors text-white h-10 rounded flex items-center px-4 text-sm"
+                >
+                  <svg
+                    xmlns="http://www.w3.org/2000/svg"
+                    height="24"
+                    viewBox="0 -960 960 960"
+                    width="24"
+                    class="fill-current text-white"
+                  >
+                    <path
+                      d="M480-120q-150 0-255-105T120-480q0-150 105-255t255-105q14 0 27.5 1t26.5 3q-41 29-65.5 75.5T444-660q0 90 63 153t153 63q55 0 101-24.5t75-65.5q2 13 3 26.5t1 27.5q0 150-105 255T480-120Zm0-80q88 0 158-48.5T740-375q-20 5-40 8t-40 3q-123 0-209.5-86.5T364-660q0-20 3-40t8-40q-78 32-126.5 102T200-480q0 116 82 198t198 82Zm-10-270Z"
+                    />
+                  </svg>
+                  <span class="hidden dark:inline">Açık Mod</span>
                   <span class="inline dark:hidden">Koyu Mod</span>
                 </button>
               </div>
@@ -51,10 +77,10 @@
             <p>İyi bir kariyer için, doğru bir başlangıç gerekir. Prototürk'de bir çok dil ve teknolojiye ait derslerle doğru bir başlangıç yapmaya hazırsın!</p>
               
 
-                <div class="grid mt-10 mb-5 grid-cols-10 gap-3 md:gap-7  ">
-                  <div class="col-span-2">
-                    <a href="" class="border flex flex-col px-4 py-7 items-center ">
-                      <span class=" w-24 h-24 scale-90 bg-red-500 bg-opacity-10  rounded-full grid place-items-center relative ">
+                <div class=" mt-5 mb-5 grid-cols-10 gap-3 lg:gap-7 lg:grid overflow-auto flex  ">
+                  <div class="col-span-5  lg:col-span-2 ">
+                    <a href="" class="slider-items ">
+                      <span class=" w-24 h-24 scale-90 bg-red-200 bg-opacity-10  rounded-full grid place-items-center relative ">
                         <span class="absolute -top-[10px] -right-[10px] w-24 h-24 -z-1 scale-90 bg-red-500 bg-opacity-10 rounded-full"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" class="fill-current text-red-700 "><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
                       </span>
@@ -63,8 +89,8 @@
                       </span>
                     </a>
                   </div>
-                  <div class="col-span-2">
-                    <a href="" class="border flex flex-col px-4 py-7 items-center ">
+                  <div class="col-span-5 lg:col-span-2">
+                    <a href="" class="slider-items ">
                       <span class=" w-24 h-24 scale-90 bg-indigo-500 bg-opacity-10  rounded-full grid place-items-center relative ">
                         <span class="absolute -top-[10px] -right-[10px] w-24 h-24 -z-1 scale-90 bg-indigo-500 bg-opacity-10 rounded-full"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" class="fill-current text-indigo-700 "><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
@@ -74,8 +100,8 @@
                       </span>
                     </a>
                   </div>
-                  <div class="col-span-2">
-                    <a href="" class="border flex flex-col px-4 py-7 items-center ">
+                  <div class="col-span-5 lg:col-span-2">
+                    <a href="" class="slider-items ">
                       <span class=" w-24 h-24 scale-90 bg-blue-500 bg-opacity-10  rounded-full grid place-items-center relative ">
                         <span class="absolute -top-[10px] -right-[10px] w-24 h-24 -z-1 scale-90 bg-blue-500 bg-opacity-10 rounded-full"></span>
                         <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" class="fill-current text-blue-700 "><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
@@ -85,8 +111,8 @@
                       </span>
                     </a>
                   </div>
-                <div class="col-span-2">
-                  <a href="" class="border flex flex-col px-4 py-7 items-center ">
+                <div class="col-span-5 lg:col-span-2">
+                  <a href="" class="slider-items ">
                     <span class=" w-24 h-24 scale-90 bg-pink-500 bg-opacity-10  rounded-full grid place-items-center relative ">
                       <span class="absolute -top-[10px] -right-[10px] w-24 h-24 -z-1 scale-90 bg-pink-500 bg-opacity-10 rounded-full"></span>
                       <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" class="fill-current text-pink-700 "><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
@@ -96,8 +122,8 @@
                     </span>
                   </a>
                 </div>
-                <div class="col-span-2">
-                  <a href="" class="border flex flex-col px-4 py-7 items-center ">
+                <div class="col-span-5 lg:col-span-2">
+                  <a href="" class="slider-items ">
                     <span class=" w-24 h-24 scale-90 bg-green-500 bg-opacity-10  rounded-full grid place-items-center relative ">
                       <span class="absolute -top-[10px] -right-[10px] w-24 h-24 -z-1 scale-90 bg-green-500 bg-opacity-10 rounded-full"></span>
                       <svg xmlns="http://www.w3.org/2000/svg" height="40" viewBox="0 -960 960 960" width="40" class="fill-current text-green-700 "><path d="M320-240 80-480l240-240 57 57-184 184 183 183-56 56Zm320 0-57-57 184-184-183-183 56-56 240 240-240 240Z"/></svg>
@@ -110,8 +136,8 @@
               </div>
               
             </div>
-              <div class="bg-twitter p-7 rounded-mm text-white flex items-center">
-                  <div class="flex-shrink-0 w-20 pl-2">
+              <div class="bg-twitter p-7 rounded-mm text-white flex flex-col lg:flex-row items-center">
+                  <div class="flex-shrink-0 w-20 pl-0 lg:pl-2 mb-4 lg:mb-0">
                     <svg xmlns="http://www.w3.org/2000/svg" height="50" viewBox="0 -960 960 960" width="50" class="fill-current text-white"><path d="M398-120q-27 0-51.5-11.5T305-164L46-483l26-25q19-19 45-22t47 12l116 81v-403q0-17 11.5-28.5T320-880q17 0 28.5 11.5T360-840v557l-111-78 118 146q6 7 14 11t17 4h282q33 0 56.5-23.5T760-280v-280q0-17 11.5-28.5T800-600q17 0 28.5 11.5T840-560v280q0 66-47 113t-113 47H398Zm42-320v-240q0-17 11.5-28.5T480-720q17 0 28.5 11.5T520-680v240h-80Zm160 0v-200q0-17 11.5-28.5T640-680q17 0 28.5 11.5T680-640v200h-80Zm-80 80Z"/></svg>
                   </div>
               <div>
@@ -159,6 +185,13 @@
         {
           document.getElementById(id).classList.toggle('active');
         }
+      
        </script> 
 </body>
+<script>
+    function showMenu(id)
+        {
+          document.getElementById(id).classList.toggle('active');
+        }
+</script>
 </html>

@@ -35,6 +35,9 @@
   .input {
     @apply p-3 rounded 
   }
+  .slider-items{
+    @apply border flex flex-col px-4 py-7 items-center
+  }
 }
 
 @layer base {

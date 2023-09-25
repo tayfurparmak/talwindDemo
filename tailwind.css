@@ -25,12 +25,12 @@
 
   }
 
-  .menu {
-    @apply inset-0 invisible md:visible w-64 border-r p-3 flex flex-col border-gray-100 dark:bg-gray-900 divide-solid dark:text-white divide-gray-100 
+  .sidebar {
+    @apply w-full bg-white lg:w-64 absolute lg:relative opacity-0 flex flex-col lg:opacity-100 top-15 lg:top-0 invisible lg:visible  border-r p-2  flex-shrink-0  border-gray-100 dark:bg-gray-900 divide-solid dark:text-white divide-gray-100 transition-all overflow-auto
   }
 
-  .menu.active {
-    @apply visible  
+  .sidebar.active {
+    @apply z-10 opacity-100 visible  
   }
   .input {
     @apply p-3 rounded 

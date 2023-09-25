@@ -9,7 +9,7 @@
 <body class="bg-white h-full flex flex-col dark:bg-gray-900 dark:text-white min-h-screen" >
 
         <div class="h-15 border-b border-gray-100 dark:bg-gray-900 w-full flex justify-between items-center px-5 py-5">
-          <button type="button" class="btn md:hidden bg-transparent" onclick="showMenu('menu')">
+          <button type="button" class="btn md:hidden bg-transparent" onclick="showsidebar('sidebar')">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="w-6 h-6 text-blue-500"
@@ -32,12 +32,12 @@
         </div>
 
         <main class="h-full flex">
-          <aside id="menu" class="menu">
+          <aside id="sidebar" class="sidebar">
               <nav class="mb-3">
                 <a href="#" class="nav-link ">Ana Sayfa</a>
                 <a href="#" class="nav-link">Akış</a>
                 <a href="#" class="nav-link">Keşfet</a>
-                <a href="#" class="nav-link">Makalaler</a>
+               <a href="#" class="nav-link">Makalaler</a>
                 <a href="#" class="nav-link">Soru & Cevap</a>
               </nav>
               <nav class="mb-3 pt-3">
@@ -189,7 +189,7 @@
        </script> 
 </body>
 <script>
-    function showMenu(id)
+    function showsidebar(id)
         {
           document.getElementById(id).classList.toggle('active');
         }
